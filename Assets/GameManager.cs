@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
 
     void InstantiatePlanet()
-    {   
+    {
         // position equal to the planetSpawnPoint position
         Vector3 pos = planetSpawnPoint.transform.position;
         pos.x = Random.Range(lowerX, upperX);
@@ -29,6 +29,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
