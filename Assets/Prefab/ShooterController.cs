@@ -8,6 +8,8 @@ public class ShooterController : MonoBehaviour
     public Color currentColor;
     public float shootingRate;
 
+    private bool shootPressed=false;
+
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -31,10 +33,25 @@ public class ShooterController : MonoBehaviour
         }
 
         if (timer > (1/shootingRate))
+        if (Input.GetKey(KeyCode.Space))
         {
             timer = 0;
             shoot();
         }
+=======
+        else
+        {
+            shootPressed = false;
+        }
+        if (timer > 1/shootingRate)
+        {
+            if (shootPressed)
+            {
+                timer = 0;
+                shoot();
+            }
+        }
+        timer += Time.deltaTime;
     }
 
     void shoot()
