@@ -18,7 +18,6 @@ public class EndPoint : MonoBehaviour
     // destroy anything that collides with this
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger!");
         Destroy(collision.gameObject);
     }
 

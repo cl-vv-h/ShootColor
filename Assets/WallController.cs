@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlanetController : MonoBehaviour
-{   
+public class WallController : MonoBehaviour
+{
     // speed of the planet
     public float speed = 5.0f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +14,7 @@ public class PlanetController : MonoBehaviour
         //transform.position = spawnPoint.transform.position;
         // start with either blue color or red color on sprite renderer (ternary operator)
         GetComponent<SpriteRenderer>().color = Random.Range(0, 2) == 0 ? Color.blue : Color.red;
-        
+
     }
 
     // Update is called once per frame
