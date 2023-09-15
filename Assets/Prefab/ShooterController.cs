@@ -8,6 +8,12 @@ public class ShooterController : MonoBehaviour
     public Color currentColor;
     public float shootingRate;
 
+    public float mvSpeed;
+
+    public float horizontalInput;
+
+    public float verticalInput;
+
     private bool shootPressed=false;
 
     private float timer;
@@ -16,22 +22,35 @@ public class ShooterController : MonoBehaviour
     {
         // start color = white
         currentColor = Color.blue;
+        shootingRate = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
+
+        // Player movement
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        float tmpSpeed = horizontalInput * mvSpeed * Time.deltaTime;
+        float horizontalSpeed = Mathf.Abs(transform.position.x) < 2.5 ? tmpSpeed :
+                (transform.position.x<0? Mathf.Max(0, tmpSpeed) : Mathf.Min(0, tmpSpeed));
+        float verticalSpeed = verticalInput * mvSpeed * Time.deltaTime;
+        transform.Translate(new Vector3(horizontalInput * mvSpeed * Time.deltaTime, verticalInput * mvSpeed * Time.deltaTime, 0));
+
+        // Player rotation
         float rota = transform.rotation.z / transform.rotation.w;
-        if (Input.GetKey(KeyCode.RightArrow) && rota > -1)
+        if (Input.GetKey(KeyCode.E) && rota > -1)
         {
             transform.eulerAngles += new Vector3(0, 0, -5);
         }
-        if (Input.GetKey(KeyCode.LeftArrow) && rota < 1)
+        if (Input.GetKey(KeyCode.Q) && rota < 1)
         {
             transform.eulerAngles -= new Vector3(0, 0, -5);
         }
 
+        // Player shooting
         if (Input.GetKey(KeyCode.Space))
         {
             shootPressed = true;
@@ -48,7 +67,6 @@ public class ShooterController : MonoBehaviour
                 shoot();
             }
         }
-        timer += Time.deltaTime;
     }
 
     void shoot()

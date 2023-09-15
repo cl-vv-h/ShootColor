@@ -105,7 +105,10 @@ MonoBehaviour:
   bullet: {fileID: 6475304824814642615, guid: b74f64b156da946db8cef6554d904710, type: 3}
   bulletPos: {fileID: 6745611962595199620}
   currentColor: {r: 0, g: 0, b: 0, a: 0}
-  shootingRate: 1.1
+  shootingRate: 5
+  mvSpeed: 10
+  horizontalInput: 0
+  verticalInput: 0
 --- !u!1 &7874235542876869414
 GameObject:
   m_ObjectHideFlags: 0
