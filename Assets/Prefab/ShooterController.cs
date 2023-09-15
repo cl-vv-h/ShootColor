@@ -4,12 +4,16 @@ public class ShooterController : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
+    // variable to store color value for sprite renderer
+    public Color currentColor;
+    public float shootingRate;
 
     private float timer;
     // Start is called before the first frame update
     void Start()
     {
-
+        // start color = white
+        currentColor = Color.blue;
     }
 
     // Update is called once per frame
@@ -26,7 +30,7 @@ public class ShooterController : MonoBehaviour
             transform.eulerAngles -= new Vector3(0, 0, -5);
         }
 
-        if (timer > 0.5)
+        if (timer > (1/shootingRate))
         {
             timer = 0;
             shoot();

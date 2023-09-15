@@ -19,11 +19,43 @@ public class BulletScript : MonoBehaviour
         transform.rotation = playerRota;
         rb.velocity = speed * direction.normalized;
         rb.MoveRotation(playerRota);
+        // color of bullet = currentColor value in ShooterController script
+        GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
     }
 
     // Update is called once per frame
     void Update()
     {
         //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // gameobject tag is wall
+        if (other.gameObject.tag == "Wall")
+        {
+            // destroy wall
+           //Destroy(other.gameObject);
+            Debug.Log("wall destroyed!");
+            // update player current color to wall color
+            player.GetComponent<ShooterController>().currentColor = other.gameObject.GetComponent<SpriteRenderer>().color;
+        }
+        if(other.gameObject.tag == "Planet" )
+        {   
+            // if bullet color is same as planet color
+            if (other.gameObject.GetComponent<SpriteRenderer>().color == transform.GetComponent<SpriteRenderer>().color)
+            {
+                // destroy planet && bullet destroyed
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                Debug.Log("planet destroyed!");
+            }
+            else
+            {
+                // only destroy bullet
+                Destroy(gameObject);
+                Debug.Log("bullet destroyed!");
+            }
+        }
     }
 }
