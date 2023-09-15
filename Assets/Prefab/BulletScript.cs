@@ -27,6 +27,16 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
         //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        if(Mathf.Abs(transform.position.x) > 3 || transform.position.y > 9)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
