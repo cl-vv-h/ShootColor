@@ -40,7 +40,7 @@ public class ShooterController : MonoBehaviour
         {
             shootPressed = false;
         }
-        if (timer > 0.5)
+        if (timer > 1/shootingRate)
         {
             if (shootPressed)
             {
