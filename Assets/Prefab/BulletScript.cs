@@ -26,14 +26,12 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.Translate(Vector3.forward * Time.deltaTime * speed);
-<<<<<<< HEAD
-=======
+
         if(Mathf.Abs(transform.position.x) > 3 || transform.position.y > 9)
         {
             Destroy(gameObject);
         }
->>>>>>> 5f3f6fc7b7363e6d508458f9778dd3f870f91e81
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
