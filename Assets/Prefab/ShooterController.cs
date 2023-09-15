@@ -7,8 +7,11 @@ public class ShooterController : MonoBehaviour
     // variable to store color value for sprite renderer
     public Color currentColor;
     public float shootingRate;
+<<<<<<< HEAD
+=======
 
     private bool shootPressed=false;
+>>>>>>> 5f3f6fc7b7363e6d508458f9778dd3f870f91e81
 
     private float timer;
     // Start is called before the first frame update
