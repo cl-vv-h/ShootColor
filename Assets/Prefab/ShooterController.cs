@@ -35,12 +35,16 @@ public class ShooterController : MonoBehaviour
             transform.eulerAngles -= new Vector3(0, 0, -5);
         }
 
+<<<<<<< HEAD
         if (timer > (1/shootingRate))
+=======
         if (Input.GetKey(KeyCode.Space))
+>>>>>>> 5f3f6fc7b7363e6d508458f9778dd3f870f91e81
         {
             timer = 0;
             shoot();
         }
+<<<<<<< HEAD
 =======
         else
         {
@@ -55,6 +59,7 @@ public class ShooterController : MonoBehaviour
             }
         }
         timer += Time.deltaTime;
+>>>>>>> 5f3f6fc7b7363e6d508458f9778dd3f870f91e81
     }
 
     void shoot()
