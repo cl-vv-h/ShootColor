@@ -6,6 +6,7 @@ public class ShooterController : MonoBehaviour
     public Transform bulletPos;
 
     private float timer;
+    private bool shootPressed = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +26,23 @@ public class ShooterController : MonoBehaviour
         {
             transform.eulerAngles -= new Vector3(0, 0, -5);
         }
-
+        if (Input.GetKey(KeyCode.Space))
+        {
+            shootPressed = true;
+        }
+        else
+        {
+            shootPressed = false;
+        }
         if (timer > 0.5)
         {
-            timer = 0;
-            shoot();
+            if (shootPressed)
+            {
+                timer = 0;
+                shoot();
+            }
         }
+        timer += Time.deltaTime;
     }
 
     void shoot()
