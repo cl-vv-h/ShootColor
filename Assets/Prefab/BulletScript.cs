@@ -7,18 +7,19 @@ public class BulletScript : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rb;
     public float speed;
-    private Vector3 shootDirct;
+    private GameObject body;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        body = GameObject.FindGameObjectWithTag("Body");
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 direction = transform.position - player.transform.position;
-        Quaternion playerRota = player.transform.rotation;
-        transform.rotation = playerRota;
+        Vector3 direction = transform.position - body.transform.position;
+        Quaternion bodyRota = body.transform.rotation;
+        transform.rotation = bodyRota;
         rb.velocity = speed * direction.normalized;
-        rb.MoveRotation(playerRota);
+        rb.MoveRotation(bodyRota);
         // color of bullet = currentColor value in ShooterController script
         GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
     }

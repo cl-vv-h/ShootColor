@@ -9,6 +9,7 @@ public class ShooterController : MonoBehaviour
     public float shootingRate;
 
     public float mvSpeed;
+    public float rotSpeed;
 
     public float horizontalInput;
 
@@ -30,6 +31,7 @@ public class ShooterController : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        GameObject body = GameObject.FindGameObjectWithTag("Body");
         // Player movement
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -43,11 +45,11 @@ public class ShooterController : MonoBehaviour
         float rota = transform.rotation.z / transform.rotation.w;
         if (Input.GetKey(KeyCode.E) && rota > -1)
         {
-            transform.eulerAngles += new Vector3(0, 0, -5);
+            body.transform.eulerAngles += new Vector3(0, 0, -1*rotSpeed);
         }
         if (Input.GetKey(KeyCode.Q) && rota < 1)
         {
-            transform.eulerAngles -= new Vector3(0, 0, -5);
+            body.transform.eulerAngles -= new Vector3(0, 0, -1*rotSpeed);
         }
 
         // Player shooting
