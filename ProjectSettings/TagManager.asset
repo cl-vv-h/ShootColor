@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Planet
   - Wall
+  - Body
   layers:
   - Default
   - TransparentFX
