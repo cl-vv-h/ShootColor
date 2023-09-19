@@ -28,10 +28,13 @@ public class BulletScript : MonoBehaviour
     void Update()
     {
 
-        if(Mathf.Abs(transform.position.x) > 3 || transform.position.y > 9)
+/*        if(Mathf.Abs(transform.position.x) > 3 || transform.position.y > 9)
         {
             Destroy(gameObject);
-        }
+        }*/
+        
+        // move bullet forward
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
 
     }
 
@@ -55,12 +58,6 @@ public class BulletScript : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(gameObject);
                 Debug.Log("planet destroyed!");
-            }
-            else
-            {
-                // only destroy bullet
-                Destroy(gameObject);
-                Debug.Log("bullet destroyed!");
             }
         }
     }
