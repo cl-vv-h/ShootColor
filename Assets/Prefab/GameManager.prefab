@@ -50,9 +50,8 @@ MonoBehaviour:
   planetUpperX: 2.5
   planetSpawnRate: 1
   planetSpawnDelay: 1
-  wallPrefab: {fileID: 2875737831681269404, guid: 877d8c62d6b6aab449c80c1584d55a16, type: 3}
-  wallSpawnPoint: {fileID: 4915671274286977571, guid: b52f61d52ec4bf14185b6aa0561fdc6d, type: 3}
+  wallPrefab: {fileID: 0}
+  wallSpawnPoint: {fileID: 0}
   wallLowerX: -2.5
   wallUpperX: 2.5
-  wallSpawnRate: 1
-  wallSpawnDelay: 1
+  startGamepanel: {fileID: 0}
