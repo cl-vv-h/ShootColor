@@ -7,7 +7,7 @@ public class HealthBarController : MonoBehaviour
     public float limitTime;
 
     private SpriteRenderer sr;
-    private float initWidth;
+    private float initWidth = 7;
     private float timer;
 
     // Start is called before the first frame update
@@ -48,7 +48,8 @@ public class HealthBarController : MonoBehaviour
 
 
         // Save the original width and set timer.
-        initWidth = transform.localScale.x;
+        Vector3 ls = transform.localScale;
+        transform.localScale = new Vector3(initWidth, ls.y, ls.z);
         timer = limitTime;
     }
 
@@ -64,14 +65,17 @@ public class HealthBarController : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player.GetComponent<ShooterController>().currentColor == sr.color)
         {
-            // Application.Quit();
+            //Application.Quit();
+            //UnityEditor.EditorApplication.isPlaying = false;
+            player.GetComponent<ShooterController>().currentColor = Color.black;
+            Start();
+
+        }
+
+        if (timer <= 0)
+        {
+            Application.Quit();
             UnityEditor.EditorApplication.isPlaying = false;
-
-        // if my color == player color 
-        // if(GetComponent<SpriteRenderer>().color == player.GetComponent<SpriteRenderer>().color ) 
-       // {
-          //  Debug.Log("We win");
-
         }
     }
 }
