@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class HealthBarController : MonoBehaviour
-{
+{   
+    public GameObject player;
     public float decreaseSpeed;
     public float limitTime;
 
@@ -33,7 +34,7 @@ public class HealthBarController : MonoBehaviour
                 color[i] = 0;
             }
         }
-        sr.color = new Color(color[0], color[1], color[2]);
+        sr.color = new Color(128, 0, 128);
 
         // Save the original width and set timer.
         initWidth = transform.localScale.x;
@@ -47,5 +48,10 @@ public class HealthBarController : MonoBehaviour
         Vector3 ls = transform.localScale;
         float newX = initWidth * timer / limitTime > 0 ? initWidth * timer / limitTime : 0;
         transform.localScale = new Vector3(newX, ls.y, ls.z);
+        // if my color == player color 
+        if(GetComponent<SpriteRenderer>().color == player.GetComponent<SpriteRenderer>().color ) 
+        {
+            Debug.Log("We win");
+        }
     }
 }

@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     private GameObject body;
+    public Color myColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class BulletScript : MonoBehaviour
         rb.MoveRotation(bodyRota);
         // color of bullet = currentColor value in ShooterController script
         GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
+        myColor = Color.red;
     }
 
     // Update is called once per frame
@@ -50,15 +52,22 @@ public class BulletScript : MonoBehaviour
             player.GetComponent<ShooterController>().currentColor = other.gameObject.GetComponent<SpriteRenderer>().color;
         }
         if(other.gameObject.tag == "Planet" )
-        {   
-            // if bullet color is same as planet color
+        {
+            Debug.Log("planet hit1");
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            // get planet's color
+
+            player.GetComponent<ShooterController>().CalculateNewColor(other.gameObject.GetComponent<SpriteRenderer>().color); 
+            /*// if bullet color is same as planet color
             if (other.gameObject.GetComponent<SpriteRenderer>().color == transform.GetComponent<SpriteRenderer>().color)
             {
                 // destroy planet && bullet destroyed
-                Destroy(other.gameObject);
-                Destroy(gameObject);
+                
+                // change color of othe game object
+                // player.GetComponent<ShooterController>().currentColor = GetComponent<SpriteRenderer>().color;
                 Debug.Log("planet destroyed!");
-            }
+            }*/
         }
     }
 }
