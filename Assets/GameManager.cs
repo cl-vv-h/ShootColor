@@ -20,14 +20,38 @@ public class GameManager : MonoBehaviour
     //public int wallSpawnRate;
     //public int wallSpawnDelay;
 
+    // variable to hold panel UI object
+    public GameObject startGamepanel;
+    // variable to hold end game panel UI object
+    //public GameObject endGamePanel;
+
     
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiatePlanet", planetSpawnDelay, planetSpawnRate);
+
+        //InvokeRepeating("InstantiatePlanet", planetSpawnDelay, planetSpawnRate);
         //InvokeRepeating("InstantiateWall", wallSpawnDelay, wallSpawnRate);
+
+
+        // delay 10 seconds using coroutine
+        StartCoroutine(waiter());
+        
+        //InvokeRepeating("InstantiateWall", wallSpawnDelay, wallSpawnRate);
+
+
     }
+    IEnumerator waiter()
+    {
+        
+
+        //Wait for 4 seconds
+        yield return new WaitForSecondsRealtime(10);
+        InvokeRepeating("InstantiatePlanet", planetSpawnDelay, planetSpawnRate);
+        startGamepanel.gameObject.SetActive(false);
+    }
+
 
     void InstantiatePlanet()
     {
