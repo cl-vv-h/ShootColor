@@ -1,11 +1,5 @@
-using UnityEditor.Build;
 using UnityEngine;
-
-// create a enum of colors
-public enum ColorEnum
-{
-    
-}
+using TMPro;
 
 public class ShooterController : MonoBehaviour
 {   
@@ -25,6 +19,10 @@ public class ShooterController : MonoBehaviour
 
     public float verticalInput;
 
+    public float timeSurvive = 0;
+
+    private GameObject scoreTxt;
+
     private bool shootPressed=false;
 
     private float timer;
@@ -38,6 +36,8 @@ public class ShooterController : MonoBehaviour
         currentColor = Color.black;
 
         shootingRate = 5;
+
+        scoreTxt = GameObject.FindGameObjectWithTag("Score");
     }
 
     // Update is called once per frame
@@ -45,6 +45,8 @@ public class ShooterController : MonoBehaviour
     {
         UpdatePlayerColor();
         timer += Time.deltaTime;
+        timeSurvive += Time.deltaTime;
+        scoreTxt.GetComponent<TMP_Text>().text = timeSurvive.ToString("0.00") + "s";
 
         GameObject body = GameObject.FindGameObjectWithTag("Body");
         

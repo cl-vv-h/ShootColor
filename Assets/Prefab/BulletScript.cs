@@ -23,8 +23,6 @@ public class BulletScript : MonoBehaviour
         rb.MoveRotation(bodyRota);
         // color of bullet = currentColor value in ShooterController script
 
-        // gameObject.GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
-
         GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
         myColor = Color.red;
 
@@ -47,14 +45,14 @@ public class BulletScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // gameobject tag is wall
-        if (other.gameObject.tag == "Wall")
-        {
-            // destroy wall
-           //Destroy(other.gameObject);
-            Debug.Log("wall destroyed!");
-            // update player current color to wall color
-            player.GetComponent<ShooterController>().currentColor = other.gameObject.GetComponent<SpriteRenderer>().color;
-        }
+        //if (other.gameObject.tag == "Wall")
+        //{
+        //    // destroy wall
+        //   //Destroy(other.gameObject);
+        //    Debug.Log("wall destroyed!");
+        //    // update player current color to wall color
+        //    player.GetComponent<ShooterController>().currentColor = other.gameObject.GetComponent<SpriteRenderer>().color;
+        //}
         if(other.gameObject.tag == "Planet" )
         {
 
