@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     private GameObject body;
+    public Color myColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,12 @@ public class BulletScript : MonoBehaviour
         rb.velocity = speed * direction.normalized;
         rb.MoveRotation(bodyRota);
         // color of bullet = currentColor value in ShooterController script
-        gameObject.GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
+
+        // gameObject.GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
+
+        GetComponent<SpriteRenderer>().color = player.GetComponent<ShooterController>().currentColor;
+        myColor = Color.red;
+
     }
 
     // Update is called once per frame
@@ -51,21 +57,32 @@ public class BulletScript : MonoBehaviour
         }
         if(other.gameObject.tag == "Planet" )
         {
-            // add color into play
-            addColor(other.gameObject.GetComponent<SpriteRenderer>().color);
-            // destroy planet && bullet destroyed
+
+            Debug.Log("planet hit1");
             Destroy(other.gameObject);
             Destroy(gameObject);
-            Debug.Log("planet destroyed!");
+            // get planet's color
+
+            player.GetComponent<ShooterController>().CalculateNewColor(other.gameObject.GetComponent<SpriteRenderer>().color); 
+            /*// if bullet color is same as planet color
+            if (other.gameObject.GetComponent<SpriteRenderer>().color == transform.GetComponent<SpriteRenderer>().color)
+            {
+                // destroy planet && bullet destroyed
+                
+                // change color of othe game object
+                // player.GetComponent<ShooterController>().currentColor = GetComponent<SpriteRenderer>().color;
+                Debug.Log("planet destroyed!");
+            }*/
+
         }
     }
 
-    void addColor(Color color)
-    {
-        Color curColor = player.GetComponent<ShooterController>().currentColor;
-        curColor.r = Mathf.Min(1, color.r + curColor.r);
-        curColor.g = Mathf.Min(1, color.g + curColor.g);
-        curColor.b = Mathf.Min(1, color.b + curColor.b);
-        player.GetComponent<ShooterController>().currentColor = curColor;
-    }
+    // void addColor(Color color)
+    // {
+        // Color curColor = player.GetComponent<ShooterController>().currentColor;
+        // curColor.r = Mathf.Min(1, color.r + curColor.r);
+        // curColor.g = Mathf.Min(1, color.g + curColor.g);
+        // curColor.b = Mathf.Min(1, color.b + curColor.b);
+        // player.GetComponent<ShooterController>().currentColor = curColor;
+    // }
 }

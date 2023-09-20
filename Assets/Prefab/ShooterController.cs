@@ -1,11 +1,21 @@
+using UnityEditor.Build;
 using UnityEngine;
 
-public class ShooterController : MonoBehaviour
+// create a enum of colors
+public enum ColorEnum
 {
+    
+}
+
+public class ShooterController : MonoBehaviour
+{   
     public GameObject bullet;
     public Transform bulletPos;
+
     // variable to store color value for sprite renderer
     public Color currentColor;
+
+
     public float shootingRate;
 
     public float mvSpeed;
@@ -22,16 +32,22 @@ public class ShooterController : MonoBehaviour
     void Start()
     {
         // start color = white
-        currentColor = new Color(0,0,0);
+
+        // currentColor = new Color(0,0,0); // black
+
+        currentColor = Color.white;
+
         shootingRate = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePlayerColor();
         timer += Time.deltaTime;
 
         GameObject body = GameObject.FindGameObjectWithTag("Body");
+        
         // Player movement
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -75,6 +91,19 @@ public class ShooterController : MonoBehaviour
                 shoot();
             }
         }
+    }
+
+    void UpdatePlayerColor()
+    { 
+        GetComponent<SpriteRenderer>().color = currentColor;
+    }
+
+    public void CalculateNewColor(Color ColorToBeMixed) // planet color
+    {
+        Debug.Log(ColorToBeMixed.ToString());
+        Color result = Color.Lerp(currentColor, ColorToBeMixed, 0.5f); // 50%
+        currentColor = result;
+        UpdatePlayerColor();
     }
 
     void shoot()
