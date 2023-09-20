@@ -63,7 +63,8 @@ public class BulletScript : MonoBehaviour
             Destroy(gameObject);
             // get planet's color
 
-            player.GetComponent<ShooterController>().CalculateNewColor(other.gameObject.GetComponent<SpriteRenderer>().color); 
+            //player.GetComponent<ShooterController>().CalculateNewColor(other.gameObject.GetComponent<SpriteRenderer>().color); 
+            addColor(other.gameObject.GetComponent<SpriteRenderer>().color);
             /*// if bullet color is same as planet color
             if (other.gameObject.GetComponent<SpriteRenderer>().color == transform.GetComponent<SpriteRenderer>().color)
             {
@@ -77,12 +78,19 @@ public class BulletScript : MonoBehaviour
         }
     }
 
-    // void addColor(Color color)
-    // {
-        // Color curColor = player.GetComponent<ShooterController>().currentColor;
-        // curColor.r = Mathf.Min(1, color.r + curColor.r);
-        // curColor.g = Mathf.Min(1, color.g + curColor.g);
-        // curColor.b = Mathf.Min(1, color.b + curColor.b);
-        // player.GetComponent<ShooterController>().currentColor = curColor;
-    // }
+     void addColor(Color color)
+     {
+        Color curColor = player.GetComponent<ShooterController>().currentColor;
+        curColor.r = Mathf.Min(1, color.r + curColor.r);
+        curColor.g = Mathf.Min(1, color.g + curColor.g);
+        curColor.b = Mathf.Min(1, color.b + curColor.b);
+
+        if(curColor.r == 1 && curColor.g == 1 && curColor.b == 1)
+        {
+            curColor = Color.black;
+        }
+
+        player.GetComponent<ShooterController>().currentColor = curColor;
+     }
+
 }

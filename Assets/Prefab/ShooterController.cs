@@ -35,7 +35,7 @@ public class ShooterController : MonoBehaviour
 
         // currentColor = new Color(0,0,0); // black
 
-        currentColor = Color.white;
+        currentColor = Color.black;
 
         shootingRate = 5;
     }
