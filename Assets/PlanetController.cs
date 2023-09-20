@@ -7,12 +7,18 @@ public class PlanetController : MonoBehaviour
     // speed of the planet
     public float speed = 5.0f;
 
+    private Dictionary<int, Color> colorDict;
     // Start is called before the first frame update
     void Start()
     {
         //transform.position = spawnPoint.transform.position;
         // start with either blue color or red color on sprite renderer (ternary operator)
-        GetComponent<SpriteRenderer>().color = Random.Range(0, 2) == 0 ? Color.blue : Color.red;
+        colorDict = new Dictionary<int, Color>();
+        colorDict.Add(0, Color.red);
+        colorDict.Add(1, Color.green);
+        colorDict.Add(2, Color.blue);
+
+        GetComponent<SpriteRenderer>().color = colorDict[Random.Range(0,3)];
         
     }
 

@@ -14,7 +14,7 @@ public class HealthBarController : MonoBehaviour
     {
         // Get a random color when game starts.
         sr = gameObject.GetComponent<SpriteRenderer>();
-        int[] color = { 255, 255, 255 };
+        int[] color = { 1, 1, 1 };
 
         int randomSeed = Random.Range(0, 6);
         if (randomSeed>=3)
@@ -33,7 +33,7 @@ public class HealthBarController : MonoBehaviour
                 color[i] = 0;
             }
         }
-        sr.color = new Color(color[0], color[1], color[2]);
+        sr.color = new Color(color[0], color[1], color[2],1);
 
         // Save the original width and set timer.
         initWidth = transform.localScale.x;
@@ -47,5 +47,12 @@ public class HealthBarController : MonoBehaviour
         Vector3 ls = transform.localScale;
         float newX = initWidth * timer / limitTime > 0 ? initWidth * timer / limitTime : 0;
         transform.localScale = new Vector3(newX, ls.y, ls.z);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player.GetComponent<ShooterController>().currentColor == sr.color)
+        {
+            Application.Quit();
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 }

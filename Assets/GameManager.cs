@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject wallSpawnPoint;
     public float wallLowerX;
     public float wallUpperX;
-    public int wallSpawnRate;
-    public int wallSpawnDelay;
+    //public int wallSpawnRate;
+    //public int wallSpawnDelay;
 
     
 
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("InstantiatePlanet", planetSpawnDelay, planetSpawnRate);
-        InvokeRepeating("InstantiateWall", wallSpawnDelay, wallSpawnRate);
+        //InvokeRepeating("InstantiateWall", wallSpawnDelay, wallSpawnRate);
     }
 
     void InstantiatePlanet()

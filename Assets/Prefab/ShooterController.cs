@@ -22,7 +22,7 @@ public class ShooterController : MonoBehaviour
     void Start()
     {
         // start color = white
-        currentColor = Color.blue;
+        currentColor = new Color(0,0,0);
         shootingRate = 5;
     }
 
@@ -39,21 +39,27 @@ public class ShooterController : MonoBehaviour
         float horizontalSpeed = Mathf.Abs(transform.position.x) < 2.5 ? tmpSpeed :
                 (transform.position.x<0? Mathf.Max(0, tmpSpeed) : Mathf.Min(0, tmpSpeed));
         float verticalSpeed = verticalInput * mvSpeed * Time.deltaTime;
-        transform.Translate(new Vector3(horizontalInput * mvSpeed * Time.deltaTime, verticalInput * mvSpeed * Time.deltaTime, 0));
+        transform.Translate(new Vector3(horizontalSpeed, verticalSpeed, 0));
 
         // Player rotation
-        float rota = transform.rotation.z / transform.rotation.w;
-        if (Input.GetKey(KeyCode.E) && rota > -1)
+        //float rota = transform.rotation.z / transform.rotation.w;
+        if (Input.GetKey(KeyCode.E))
         {
             body.transform.eulerAngles += new Vector3(0, 0, -1*rotSpeed);
         }
-        if (Input.GetKey(KeyCode.Q) && rota < 1)
+        if (Input.GetKey(KeyCode.Q))
         {
             body.transform.eulerAngles -= new Vector3(0, 0, -1*rotSpeed);
         }
 
-        // Player shooting
-        if (Input.GetKey(KeyCode.Space))
+        // Press 'R' to reset the color
+        if (Input.GetKey(KeyCode.R))
+        {
+            currentColor = Color.black;
+        }
+
+            // Player shooting
+            if (Input.GetKey(KeyCode.Space))
         {
             shootPressed = true;
         }
