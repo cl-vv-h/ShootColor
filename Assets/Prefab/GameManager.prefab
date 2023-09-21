@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4267412605079980064}
   - component: {fileID: 4695020273272848510}
+  - component: {fileID: 8279728183350069848}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -55,3 +56,18 @@ MonoBehaviour:
   wallLowerX: -2.5
   wallUpperX: 2.5
   startGamepanel: {fileID: 0}
+  healthbar: {fileID: 0}
+  timerScript: {fileID: 8279728183350069848}
+--- !u!114 &8279728183350069848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899849012366692132}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7428c71a6343da244a4cc25219759f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeSurvive: 0
