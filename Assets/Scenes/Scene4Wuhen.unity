@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1162,8 +1162,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 1457701101}
     m_Modifications:
     - target: {fileID: 178099119913874394, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_text
+      value: 'W A S D to Move
+
+        Q E to Rotate
+
+        Space to Shoot
+
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 178099119913874394, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_fontSize
-      value: 22.05
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 178099119913874394, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_margin.x
@@ -1282,8 +1293,12 @@ PrefabInstance:
       value: -662
       objectReference: {fileID: 0}
     - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_text
+      value: PRESS ENTER TO START
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_fontSize
-      value: 44.75
+      value: 22.05
       objectReference: {fileID: 0}
     - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_margin.x
@@ -1294,12 +1309,28 @@ PrefabInstance:
       value: -267.5232
       objectReference: {fileID: 0}
     - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_fontSizeBase
       value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7773321304709711557, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
       objectReference: {fileID: 0}
     - target: {fileID: 7911560882346566442, guid: def3d4a1d9f21174694e8106d0f862ec, type: 3}
       propertyPath: m_Pivot.x
