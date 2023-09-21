@@ -19,9 +19,9 @@ public class ShooterController : MonoBehaviour
 
     public float verticalInput;
 
-    public float timeSurvive = 0;
+    //public float timeSurvive = -9.65f;
 
-    private GameObject scoreTxt;
+    //private GameObject scoreTxt;
 
     private bool shootPressed=false;
 
@@ -37,7 +37,7 @@ public class ShooterController : MonoBehaviour
 
         shootingRate = 5;
 
-        scoreTxt = GameObject.FindGameObjectWithTag("Score");
+        // scoreTxt = GameObject.FindGameObjectWithTag("Score");
     }
 
     // Update is called once per frame
@@ -45,8 +45,8 @@ public class ShooterController : MonoBehaviour
     {
         UpdatePlayerColor();
         timer += Time.deltaTime;
-        timeSurvive += Time.deltaTime;
-        scoreTxt.GetComponent<TMP_Text>().text = timeSurvive.ToString("0.00") + "s";
+       // timeSurvive += Time.deltaTime;
+        // scoreTxt.GetComponent<TMP_Text>().text = timeSurvive.ToString("0.00") + "s";
 
         GameObject body = GameObject.FindGameObjectWithTag("Body");
         

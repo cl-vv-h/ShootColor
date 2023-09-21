@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealthBarController : MonoBehaviour
@@ -9,6 +10,7 @@ public class HealthBarController : MonoBehaviour
     private SpriteRenderer sr;
     private float initWidth = 7;
     private float timer;
+    public GameObject endScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,16 @@ public class HealthBarController : MonoBehaviour
         Vector3 ls = transform.localScale;
         transform.localScale = new Vector3(initWidth, ls.y, ls.z);
         timer = limitTime;
+        //StartCoroutine(waiter());
+    }
+    IEnumerator waiter()
+    {
+
+
+        //Wait for 4 seconds
+        yield return new WaitForSecondsRealtime(10);
+        //InvokeRepeating("InstantiatePlanet", planetSpawnDelay, planetSpawnRate);
+        //startGamepanel.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -75,7 +87,10 @@ public class HealthBarController : MonoBehaviour
         if (timer <= 0)
         {
             Application.Quit();
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
+            endScreen.gameObject.SetActive(true);
+            // set time scale to 0
+            Time.timeScale = 0;
         }
     }
 }
